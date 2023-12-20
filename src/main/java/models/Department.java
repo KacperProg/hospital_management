@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -7,7 +8,7 @@ import java.util.List;
 
 
 @Entity
-@Table (name = "department")
+@Table (name = "departments")
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +23,11 @@ public class Department {
 
     @Column
     private List <Doctor> doctors;
+
+    @ManyToOne
+    @JoinColumn(name = "hospital_id")
+    @JsonIgnoreProperties({"departments"})
+    private Hospital hospital;
 
 
     public Department(String name) {

@@ -1,5 +1,6 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ public class Hospital {
     private  String address;
 
     @Column
+    @OneToMany(mappedBy = "hospital")
+    @JsonIgnoreProperties({"hospital"})
     private List <Department> departments;
 
 
