@@ -1,4 +1,4 @@
-package models;
+package Hospital.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;

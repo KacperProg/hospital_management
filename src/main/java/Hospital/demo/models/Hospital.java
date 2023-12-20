@@ -1,41 +1,45 @@
-package models;
+package Hospital.demo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "doctors")
-public class Doctor {
-
-    //Properties
+@Table (name="hospital")
+public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
     @Column
-//    refactor
     private String name;
 
     @Column
-//    refactor
-    private List<Department> departments;
+    private  String address;
 
-    //Constructor
-    public Doctor(String name) {
+    @Column
+    @OneToMany(mappedBy = "hospital")
+    @JsonIgnoreProperties({"hospital"})
+    private List <Department> departments;
+
+
+    public Hospital(String name, String address) {
         this.name = name;
-        this.departments = new ArrayList<>();
+        this.address = address;
+        this.departments= new ArrayList<>();
     }
 
-    //Empty constructor
-    public Doctor(){
+
+    public Hospital() {
     }
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -43,15 +47,25 @@ public class Doctor {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public List<Department> getDepartments() {
         return departments;
     }
+
     public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
-
-} //Last
+}

@@ -1,4 +1,4 @@
-package models;
+package Hospital.demo.models;
 
 import jakarta.persistence.*;
 

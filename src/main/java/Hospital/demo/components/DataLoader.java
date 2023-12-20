@@ -1,4 +1,4 @@
-package components;
+package Hospital.demo.components;
 
 public class DataLoader {
 
